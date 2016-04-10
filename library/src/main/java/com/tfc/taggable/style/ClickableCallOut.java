@@ -10,14 +10,27 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ClickableCallOut extends ClickableSpan {
-    public interface OnClickCalloutListener {
-        void onClickCallout();
+    public interface OnClickCallOutListener {
+        void onClickCallOut();
     }
-    private Context mContext;
+
+    private final Context mContext;
+    private OnClickCallOutListener mListener;
 
     public ClickableCallOut(Context ctx) {
         super();
         mContext = ctx;
+    }
+
+    public void setOnClickCallOutListener(OnClickCallOutListener listener) {
+        if (listener == null) {
+            throw new IllegalArgumentException("Couldn't set listener: OnClickCallOutListener is null");
+        }
+        mListener = listener;
+    }
+
+    public OnClickCallOutListener getOnClickCallOutListener() {
+        return mListener;
     }
 
     @Override
@@ -29,12 +42,8 @@ public class ClickableCallOut extends ClickableSpan {
 
     @Override
     public void onClick(View widget) {
-        TextView tv = (TextView) widget;
-        Spanned s = (Spanned) tv.getText();
-        int start = s.getSpanStart(this);
-        int end = s.getSpanEnd(this);
-        String theWord = s.subSequence(start + 1, end).toString();
-        Toast.makeText(mContext, String.format("Here's a cool person: %s", theWord), 10).show();
-
+        if (mListener != null) {
+            mListener.onClickCallOut();
+        }
     }
 }

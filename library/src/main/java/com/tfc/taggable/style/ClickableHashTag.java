@@ -31,6 +31,10 @@ public class ClickableHashTag extends ClickableSpan {
         mTypeface = Typeface.DEFAULT;
     }
 
+    public OnClickHashTagListener getOnClickHashTagListener() {
+        return mListener;
+    }
+
     public void setTextColor(int color) {
         mTextColor = color;
     }

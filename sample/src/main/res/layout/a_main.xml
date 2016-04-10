@@ -13,28 +13,69 @@
         android:id="@+id/a_main_textinputedittext_hashtag"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/a_main_btn"
-        android:hint="input hashtag with '#'" />
-
-    <android.support.design.widget.TextInputEditText
-        android:id="@+id/a_main_textinputedittext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/a_main_textinputedittext_hashtag"
-        android:layout_toLeftOf="@+id/a_main_btn"
-        android:hint="input some text" />
+        android:layout_toLeftOf="@+id/a_main_btn_hashtag"
+        android:hint="input text with hashtag" />
 
     <Button
-        android:id="@+id/a_main_btn"
+        android:id="@+id/a_main_btn_hashtag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:onClick="onClickButton"
+        android:onClick="onClickHashTagButton"
         android:text="change" />
 
     <com.tfc.taggable.widget.TaggableTextView
-        android:id="@+id/a_main_taggabletextview"
+        android:id="@+id/a_main_taggabletextview_hashtag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/a_main_textinputedittext" />
+        android:layout_below="@+id/a_main_textinputedittext_hashtag"
+        android:hint="HashTag Results" />
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/a_main_textinputedittext_callout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/a_main_taggabletextview_hashtag"
+        android:layout_toLeftOf="@+id/a_main_btn_callout"
+        android:hint="input text with callout" />
+
+    <Button
+        android:id="@+id/a_main_btn_callout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/a_main_btn_hashtag"
+        android:onClick="onClickCallOutButton"
+        android:text="change" />
+
+    <com.tfc.taggable.widget.TaggableTextView
+        android:id="@+id/a_main_taggabletextview_callout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/a_main_textinputedittext_callout"
+        android:hint="CallOut Results" />
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/a_main_textinputedittext_taggable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/a_main_taggabletextview_callout"
+        android:layout_toLeftOf="@+id/a_main_btn_taggable"
+        android:hint="input text with taggable" />
+
+    <Button
+        android:id="@+id/a_main_btn_taggable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/a_main_btn_callout"
+        android:onClick="onClickTaggableButton"
+        android:text="change" />
+
+    <com.tfc.taggable.widget.TaggableTextView
+        android:id="@+id/a_main_taggabletextview_taggable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/a_main_textinputedittext_taggable"
+        android:hint="Taggable Results" />
 </RelativeLayout>

@@ -21,7 +21,6 @@ import android.widget.TextView;
 
 import com.tfc.taggable.style.ClickableCallOut;
 import com.tfc.taggable.style.ClickableHashTag;
-import com.tfc.taggable.util.TaggableViewUtils;
 
 /**
  * author @Fobid
@@ -48,23 +47,25 @@ public class TaggableTextView extends TextView {
         mIsClickableUrl = isClickableUrl;
     }
 
-    public void setHashTagText(ClickableHashTag clickableHashTag, String hashTag, String text) {
+    public void setHashTagText(ClickableHashTag clickableHashTag, String text) {
         if (clickableHashTag == null) {
             clickableHashTag = new ClickableHashTag(getContext());
         }
         mClickableHashTag = clickableHashTag;
 
-        TaggableViewUtils.makeHashtagTextView(mClickableHashTag, this, hashTag, text);
+        TaggableViewUtils.makeHashtagTextView(this, mClickableHashTag, text, mIsClickableUrl);
     }
 
-    public void setCalloutText(ClickableCallOut clickableCallOut) {
+    public void setCalloutText(ClickableCallOut clickableCallOut, String text) {
         if (clickableCallOut == null) {
             clickableCallOut = new ClickableCallOut(getContext());
         }
         mClickableCallOut = clickableCallOut;
+
+        TaggableViewUtils.makeCalloutTextView(this, clickableCallOut, text, mIsClickableUrl);
     }
 
-    public void setTaggableText(ClickableHashTag clickableHashTag, ClickableCallOut clickableCallOut) {
+    public void setTaggableText(ClickableHashTag clickableHashTag, ClickableCallOut clickableCallOut, String text) {
         if (clickableHashTag == null) {
             clickableHashTag = new ClickableHashTag(getContext());
         }
@@ -73,5 +74,7 @@ public class TaggableTextView extends TextView {
         }
         mClickableHashTag = clickableHashTag;
         mClickableCallOut = clickableCallOut;
+
+        TaggableViewUtils.makeTaggableTextView(this, clickableHashTag, clickableCallOut, text, mIsClickableUrl);
     }
 }
