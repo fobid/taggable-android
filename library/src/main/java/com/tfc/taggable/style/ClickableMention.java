@@ -2,34 +2,31 @@ package com.tfc.taggable.style;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
-public class ClickableCallOut extends ClickableSpan {
-    public interface OnClickCallOutListener {
-        void onClickCallOut();
+public class ClickableMention extends ClickableSpan {
+    public interface OnClickMentionListener {
+        void onClickMention();
     }
 
     private final Context mContext;
-    private OnClickCallOutListener mListener;
+    private OnClickMentionListener mListener;
 
-    public ClickableCallOut(Context ctx) {
+    public ClickableMention(Context ctx) {
         super();
         mContext = ctx;
     }
 
-    public void setOnClickCallOutListener(OnClickCallOutListener listener) {
+    public void setOnClickMentionListener(OnClickMentionListener listener) {
         if (listener == null) {
-            throw new IllegalArgumentException("Couldn't set listener: OnClickCallOutListener is null");
+            throw new IllegalArgumentException("Couldn't set listener: OnClickMentionListener is null");
         }
         mListener = listener;
     }
 
-    public OnClickCallOutListener getOnClickCallOutListener() {
+    public OnClickMentionListener getOnClickMentionListener() {
         return mListener;
     }
 
@@ -43,7 +40,7 @@ public class ClickableCallOut extends ClickableSpan {
     @Override
     public void onClick(View widget) {
         if (mListener != null) {
-            mListener.onClickCallOut();
+            mListener.onClickMention();
         }
     }
 }

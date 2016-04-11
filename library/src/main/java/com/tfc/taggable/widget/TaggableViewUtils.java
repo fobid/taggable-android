@@ -20,7 +20,7 @@ import android.text.method.LinkMovementMethod;
 import android.util.Patterns;
 import android.widget.TextView;
 
-import com.tfc.taggable.style.ClickableCallOut;
+import com.tfc.taggable.style.ClickableMention;
 import com.tfc.taggable.style.ClickableHashTag;
 import com.tfc.taggable.style.ClickableUrlSpan;
 
@@ -154,25 +154,25 @@ class TaggableViewUtils {
         textView.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
-    static void makeCalloutTextView(final TextView textView,
-                                    final ClickableCallOut clickableCallOut,
+    static void makeMentionTextView(final TextView textView,
+                                    final ClickableMention clickableMention,
                                     final String text,
                                     final boolean isClickableUrl) {
 
         SpannableString spannableString = new SpannableString(text);
 
-        ArrayList<int[]> callOutSpans = getSpans(text, '@');
-        int size = callOutSpans.size();
+        ArrayList<int[]> mentionSpans = getSpans(text, '@');
+        int size = mentionSpans.size();
 
         for (int i = 0; i < size; i++) {
-            ClickableCallOut clickableCallOutSpan = new ClickableCallOut(textView.getContext());
-            final ClickableCallOut.OnClickCallOutListener listener = clickableCallOut.getOnClickCallOutListener();
+            ClickableMention clickableMentionSpan = new ClickableMention(textView.getContext());
+            final ClickableMention.OnClickMentionListener listener = clickableMention.getOnClickMentionListener();
 
             if (listener != null) {
-                clickableCallOutSpan.setOnClickCallOutListener(listener);
+                clickableMentionSpan.setOnClickMentionListener(listener);
             }
 
-            int[] span = callOutSpans.get(i);
+            int[] span = mentionSpans.get(i);
             int callOutStart = span[0];
             if (callOutStart < 0) {
                 continue;
@@ -182,7 +182,7 @@ class TaggableViewUtils {
                 continue;
             }
 
-            spannableString.setSpan(clickableCallOutSpan, callOutStart, callOutEnd, 0);
+            spannableString.setSpan(clickableMentionSpan, callOutStart, callOutEnd, 0);
 
             if (isClickableUrl) {
                 setClickableUrl(spannableString, text);
@@ -195,7 +195,7 @@ class TaggableViewUtils {
 
     static void makeTaggableTextView(final TextView textView,
                                      final ClickableHashTag clickableHashTag,
-                                     final ClickableCallOut clickableCallOut,
+                                     final ClickableMention clickableMention,
                                      final String text,
                                      final boolean isClickableUrl) {
 
@@ -234,11 +234,11 @@ class TaggableViewUtils {
         int callOutSpansSize = callOutSpans.size();
 
         for (int i = 0; i < callOutSpansSize; i++) {
-            ClickableCallOut clickableCallOutSpan = new ClickableCallOut(textView.getContext());
-            final ClickableCallOut.OnClickCallOutListener listener = clickableCallOut.getOnClickCallOutListener();
+            ClickableMention clickableMentionSpan = new ClickableMention(textView.getContext());
+            final ClickableMention.OnClickMentionListener listener = clickableMention.getOnClickMentionListener();
 
             if (listener != null) {
-                clickableCallOutSpan.setOnClickCallOutListener(listener);
+                clickableMentionSpan.setOnClickMentionListener(listener);
             }
 
             int[] span = callOutSpans.get(i);
@@ -251,7 +251,7 @@ class TaggableViewUtils {
                 continue;
             }
 
-            spannableString.setSpan(clickableCallOutSpan, callOutStart, callOutEnd, 0);
+            spannableString.setSpan(clickableMentionSpan, callOutStart, callOutEnd, 0);
 
             if (isClickableUrl) {
                 setClickableUrl(spannableString, text);

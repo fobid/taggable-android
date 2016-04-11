@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:taggable="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -29,18 +30,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/a_main_textinputedittext_hashtag"
-        android:hint="HashTag Results" />
+        android:hint="HashTag Results"
+        taggable:onClickHashTag="onClickHashTag"
+        taggable:setHashTagText="You can #click #hashtag" />
 
     <android.support.design.widget.TextInputEditText
-        android:id="@+id/a_main_textinputedittext_callout"
+        android:id="@+id/a_main_textinputedittext_mention"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/a_main_taggabletextview_hashtag"
-        android:layout_toLeftOf="@+id/a_main_btn_callout"
+        android:layout_toLeftOf="@+id/a_main_btn_mention"
         android:hint="input text with callout" />
 
     <Button
-        android:id="@+id/a_main_btn_callout"
+        android:id="@+id/a_main_btn_mention"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -49,17 +52,19 @@
         android:text="change" />
 
     <com.tfc.taggable.widget.TaggableTextView
-        android:id="@+id/a_main_taggabletextview_callout"
+        android:id="@+id/a_main_taggabletextview_mention"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/a_main_textinputedittext_callout"
-        android:hint="CallOut Results" />
+        android:layout_below="@+id/a_main_textinputedittext_mention"
+        android:hint="CallOut Results"
+        taggable:onClickMention="onClickMention"
+        taggable:setMentionText="You can @click @mention" />
 
     <android.support.design.widget.TextInputEditText
         android:id="@+id/a_main_textinputedittext_taggable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/a_main_taggabletextview_callout"
+        android:layout_below="@+id/a_main_taggabletextview_mention"
         android:layout_toLeftOf="@+id/a_main_btn_taggable"
         android:hint="input text with taggable" />
 
@@ -68,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/a_main_btn_callout"
+        android:layout_below="@+id/a_main_btn_mention"
         android:onClick="onClickTaggableButton"
         android:text="change" />
 
@@ -77,5 +82,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/a_main_textinputedittext_taggable"
-        android:hint="Taggable Results" />
+        android:hint="Taggable Results"
+        taggable:onClickHashTag="onClickHashTag"
+        taggable:onClickMention="onClickMention"
+        taggable:setTaggableText="You can click #hashtag and @mention" />
 </RelativeLayout>

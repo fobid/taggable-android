@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.tfc.taggable.sample.R;
-import com.tfc.taggable.style.ClickableCallOut;
+import com.tfc.taggable.style.ClickableMention;
 import com.tfc.taggable.widget.TaggableTextView;
 import com.tfc.taggable.style.ClickableHashTag;
 
@@ -15,16 +15,16 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class Main extends AppCompatActivity implements ClickableHashTag.OnClickHashTagListener, ClickableCallOut.OnClickCallOutListener {
+public class Main extends AppCompatActivity implements ClickableHashTag.OnClickHashTagListener, ClickableMention.OnClickMentionListener {
 
     @Bind(R.id.a_main_textinputedittext_hashtag)
     TextInputEditText mTextInputEditTextHashTag;
     @Bind(R.id.a_main_taggabletextview_hashtag)
     TaggableTextView mTextViewHashTagResults;
 
-    @Bind(R.id.a_main_textinputedittext_callout)
+    @Bind(R.id.a_main_textinputedittext_mention)
     TextInputEditText mTextInputEditTextCallOut;
-    @Bind(R.id.a_main_taggabletextview_callout)
+    @Bind(R.id.a_main_taggabletextview_mention)
     TaggableTextView mTextViewCallOutResults;
 
     @Bind(R.id.a_main_textinputedittext_taggable)
@@ -51,14 +51,14 @@ public class Main extends AppCompatActivity implements ClickableHashTag.OnClickH
         mTextViewHashTagResults.setHashTagText(clickableHashTag, text);
     }
 
-    @OnClick(R.id.a_main_btn_callout)
+    @OnClick(R.id.a_main_btn_mention)
     public void onClickCallOutButton() {
         String text = mTextInputEditTextCallOut.getText().toString();
 
-        ClickableCallOut clickableHashTag = new ClickableCallOut(this);
-        clickableHashTag.setOnClickCallOutListener(this);
+        ClickableMention clickableHashTag = new ClickableMention(this);
+        clickableHashTag.setOnClickMentionListener(this);
 
-        mTextViewCallOutResults.setCalloutText(clickableHashTag, text);
+        mTextViewCallOutResults.setMentionText(clickableHashTag, text);
     }
 
     @OnClick(R.id.a_main_btn_taggable)
@@ -68,10 +68,10 @@ public class Main extends AppCompatActivity implements ClickableHashTag.OnClickH
         ClickableHashTag clickableHashTag = new ClickableHashTag(this);
         clickableHashTag.setOnClickHashTagListener(this);
 
-        ClickableCallOut clickableCallOut = new ClickableCallOut(this);
-        clickableCallOut.setOnClickCallOutListener(this);
+        ClickableMention clickableMention = new ClickableMention(this);
+        clickableMention.setOnClickMentionListener(this);
 
-        mTextViewTaggableResults.setTaggableText(clickableHashTag, clickableCallOut, text);
+        mTextViewTaggableResults.setTaggableText(clickableHashTag, clickableMention, text);
     }
 
     @Override
@@ -80,7 +80,7 @@ public class Main extends AppCompatActivity implements ClickableHashTag.OnClickH
     }
 
     @Override
-    public void onClickCallOut() {
-        Toast.makeText(this, "CallOut Clicked", Toast.LENGTH_LONG).show();
+    public void onClickMention() {
+        Toast.makeText(this, "Mention Clicked", Toast.LENGTH_LONG).show();
     }
 }
