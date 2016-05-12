@@ -34,6 +34,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.android.support:design:23.3.0'
     compile 'com.jakewharton:butterknife:7.0.1'
-    compile project(':library')
-    compile project(path: ':library')
+    compile project(':taggable')
+    compile project(path: ':taggable')
 }
