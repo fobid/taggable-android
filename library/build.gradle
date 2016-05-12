@@ -5,8 +5,8 @@ apply plugin: 'signing'
 
 version = '0.0.1'
 
-def siteUrl = 'https://github.com/fobid/taggable'       // Homepage URL of the library
-def gitUrl = 'https://github.com/fobid/taggable.git'    // Git repository URL
+def siteUrl = 'https://github.com/fobid/taggable-android'       // Homepage URL of the library
+def gitUrl = 'https://github.com/fobid/taggable-android.git'    // Git repository URL
 group = "com.github.fobid"                                  // Maven Group ID for the artifact
 
 android {
