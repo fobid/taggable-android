@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TaggableTextView">
+        <attr name="setClickableUrl" format="boolean" />
+        <attr name="setHashTagText" format="string" />
+        <attr name="setMentionText" format="string" />
+        <attr name="setTaggableText" format="string" />
+        <attr name="onClickHashTag" format="string" />
+        <attr name="onClickMention" format="string" />
+    </declare-styleable>
+</resources>
